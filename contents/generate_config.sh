@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/bin/bash
 
 cat <<EOF > $1/config.auto.tfvars
 configuration = [
