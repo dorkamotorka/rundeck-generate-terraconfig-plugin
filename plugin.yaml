@@ -1,0 +1,19 @@
+name: Generate Terraform configuration
+version: 1
+rundeckPluginVersion: 1.2
+author: Teodor Janez Podobnik
+date: 2022-07-11
+providers:
+  - name: GenTerraConfigBash
+    service: WorkflowStep 
+    plugin-type: script
+    script-interpreter: /bin/bash
+    script-file: generate_config.sh
+    script-args: |
+    	${config.where} 
+    config:
+      - name: where
+        type: String
+        title: Save-file-to location
+	description: Absolute path to directory where file will be stored
+	required: true
