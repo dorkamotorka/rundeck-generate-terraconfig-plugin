@@ -2,17 +2,56 @@ name: Generate Terraform configuration
 version: 1
 rundeckPluginVersion: 1.2
 author: Teodor Janez Podobnik
-date: 2022-07-11
+date: 2022-07-13
 providers:
   - name: GenTerraConfigBash
     service: WorkflowNodeStep
     plugin-type: script
     script-interpreter: /bin/bash
     script-file: generate_config.sh
-    script-args: ${config.where} 
+    script-args: ${config.num_ubuntu18} ${config.type_ubuntu18} ${config.num_ubuntu20} ${config.type_ubuntu20} ${config.num_debian} ${config.type_debian} ${config.num_centos} ${config.type_centos} 
     config:
-      - name: where
-        type: String
-        title: Save-file-to location
-        description: Absolute path to directory where file will be stored
-        required: true
+    - name: num_ubuntu18
+      type: Integer
+      title: Ubuntu 18.04 instances
+      description: Number of Ubuntu 18.04 instances to deploy
+      required: true
+    - name: type_ubuntu18
+      type: Select
+      title: Instance type
+      description: Select instance type
+      required: true
+      values: container,virtual-machine
+    - name: num_ubuntu20
+      type: Integer
+      title: Ubuntu 20.04 instances
+      description: Number of Ubuntu 20.04 instances to deploy
+      required: true
+    - name: type_ubuntu20
+      type: Select
+      title: Instance type
+      description: Select instance type
+      required: true
+      values: container,virtual-machine
+    - name: num_deb
+      type: Integer
+      title: Debian instances
+      description: Number of Debian instances to deploy
+      required: true
+    - name: type_debian
+      type: Select
+      title: Instance type
+      description: Select instance type
+      required: true
+      values: container,virtual-machine
+    - name: num_centos
+      type: Integer
+      title: Centos instances
+      description: Number of Centos instances to deploy
+      required: true
+    - name: type_centos
+      type: Select
+      title: Instance type
+      description: Select instance type
+      required: true
+      values: container,virtual-machine
